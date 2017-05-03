@@ -1,16 +1,12 @@
 /*
 Welcome to the 60fps project! Your goal is to make Cam's Pizzeria website run
 jank-free at 60 frames per second.
-
 There are two major issues in this code that lead to sub-60fps performance. Can
 you spot and fix both?
-
-
 Built into the code, you'll find a few instances of the User Timing API
 (window.performance), which will be console.log()ing frame rate data into the
 browser console. To learn more about User Timing API, check out:
 http://www.html5rocks.com/en/tutorials/webperformance/usertiming/
-
 Creator:
 Cameron Pittman, Udacity Course Developer
 cameron *at* udacity *dot* com
@@ -422,24 +418,28 @@ var pizzaSize = document.querySelector("#pizzaSize");
   }
 
   changeSliderLabel(size);
-
+  
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
+    var newwidth;
+    //set the newWidth decided by the user
     switch(size) {
         case "1":
-          return 25;
+          newwidth = 25;
+          break;
         case "2":
-          return 33.3;
+          newwidth= 33.3;
+          break;
         case "3":
-          return 50;
+          newwidth= 50;
+          break;
         default:
           console.log("bug in sizeSwitcher");
       };
     
-
-    var newwidth = (document.querySelectorAll(".randomPizzaContainer")[1].offsetWidth + dx) + 'px';
+    // read the layout once (outside the loop)
     var randomPizza = document.querySelectorAll(".randomPizzaContainer");
-
+    //loop through pizza container and set the new width
     for (var i = 0; i < randomPizza.length; i++) {
      
       randomPizza[i].style.width = newwidth + "%";
@@ -458,8 +458,9 @@ var pizzaSize = document.querySelector("#pizzaSize");
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
+//No need to do it inside the loop
+var pizzasDiv = document.getElementById("randomPizzas");
 for (var i = 2; i < 100; i++) {
-  var pizzasDiv = document.getElementById("randomPizzas");
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
