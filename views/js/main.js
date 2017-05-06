@@ -438,7 +438,7 @@ var pizzaSize = document.querySelector("#pizzaSize");
       };
     
     // read the layout once (outside the loop)
-    var randomPizza = document.querySelectorAll(".randomPizzaContainer");
+    var randomPizza = document.getElementsByClassName("randomPizzaContainer");
     //loop through pizza container and set the new width
     for (var i = 0; i < randomPizza.length; i++) {
      
@@ -521,7 +521,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var s = 256;
   var movingPizza = document.querySelector("#movingPizzas1");
 
-  for (var i = 0; i < 200; i++) {
+  for (var i = 0; i < 30; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
